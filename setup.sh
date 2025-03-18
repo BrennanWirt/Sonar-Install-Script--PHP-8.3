@@ -74,10 +74,6 @@ apt-get install -y supervisor
 cp /usr/share/sonar_poller/config/sonar_poller.conf /etc/supervisor/conf.d/
 systemctl restart supervisor
 
-## Update Composer
-cd /usr/share/sonar_poller
-composer update
-
 ## Reboot to apply ulimit changes
 echo "Rebooting...";
 reboot now
