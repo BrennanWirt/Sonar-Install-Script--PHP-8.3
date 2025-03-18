@@ -10,7 +10,7 @@ echo "Installing the Sonar poller...";
 ## Add PHP repository, setup PHP
 add-apt-repository -y ppa:ondrej/php
 apt-get -y update
-apt-get install -y php8.3-cli php8.3-xml php8.3-common php8.3-json php8.3-gmp php8.3-dev php8.3-sqlite3 php8.3-zip php8.3-fpm php8.3-mbstring composer openssl git php-pear snmp
+apt-get install -y php8.3-cli php8.3-xml php8.3-common php8.3-gmp php8.3-dev php8.3-sqlite3 php8.3-zip php8.3-fpm php8.3-mbstring composer openssl git php-pear snmp
 
 update-alternatives --set php /usr/bin/php8.3
 update-alternatives --set phpize /usr/bin/phpize8.3
@@ -75,6 +75,7 @@ cp /usr/share/sonar_poller/config/sonar_poller.conf /etc/supervisor/conf.d/
 systemctl restart supervisor
 
 ## Update Composer
+cd /usr/share/sonar_poller
 composer update
 
 ## Reboot to apply ulimit changes
