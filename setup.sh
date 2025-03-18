@@ -54,6 +54,13 @@ chown -R www-data:www-data /usr/share/sonar_poller
 apt-get install -y nginx
 cp /usr/share/sonar_poller/ssl/self-signed.conf /etc/nginx/snippets/
 cp /usr/share/sonar_poller/ssl/default /etc/nginx/sites-available/
+
+# Ensure Nginx uses PHP 8.3
+sed -i 's/php7.4-fpm.sock/php8.3-fpm.sock/g' /etc/nginx/sites-available/default
+sed -i 's/php7.4/php8.3/g' /etc/nginx/sites-available/default
+
+# Restart services
+systemctl restart php8.3-fpm
 systemctl restart nginx
 
 ## Install vendor libraries needed for poller
